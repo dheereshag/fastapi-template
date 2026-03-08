@@ -9,6 +9,7 @@ from alembic import context
 
 from config import settings
 from database import Base
+import models  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
