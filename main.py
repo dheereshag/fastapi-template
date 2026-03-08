@@ -2,14 +2,15 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
+from config import settings
 from database import get_db
+from routers import auth as auth_router
+from routers import user as user_router
 
 app = FastAPI()
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello from FastAPI!"}
+app.include_router(auth_router.router)
+app.include_router(user_router.router)
 
 
 @app.get("/health")
@@ -21,4 +22,4 @@ async def health(db: AsyncSession = Depends(get_db)):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=settings.HOST, port=settings.PORT)
