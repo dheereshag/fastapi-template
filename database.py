@@ -18,6 +18,10 @@ class Base(DeclarativeBase):
     pass
 
 
+# Import all models here so Base.metadata is populated for Alembic
+import models  # noqa: E402, F401
+
+
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         yield session
