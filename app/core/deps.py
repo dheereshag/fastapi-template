@@ -5,10 +5,10 @@ from fastapi import Depends, HTTPException, status
 from passlib.context import CryptContext
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from config import settings
-from database import get_db
-from models.user import User
-from security import oauth2_scheme
+from app.core.config import settings
+from app.core.security import oauth2_scheme
+from app.database import get_db
+from app.models.user import User
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 

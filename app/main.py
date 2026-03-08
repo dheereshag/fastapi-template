@@ -2,10 +2,10 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
-from config import settings
-from database import get_db
-from routers import auth as auth_router
-from routers import user as user_router
+from app.core.config import settings
+from app.database import get_db
+from app.routers import auth as auth_router
+from app.routers import user as user_router
 
 app = FastAPI()
 
